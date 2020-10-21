@@ -26,7 +26,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/iframeResizer.contentWindow.min.js",
+              "src/assets/js/workflow-cockpit.js"
+            ]
           },
           "configurations": {
             "production": {
