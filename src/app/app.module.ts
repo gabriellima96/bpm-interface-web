@@ -8,31 +8,26 @@ import { AppComponent } from './app.component';
 
 import { AppInitializerService } from './core/initializer/app-initializer.service';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { SolicitationModule } from './modules/solicitation/solicitation.module';
 
 export function initApp(init: AppInitializerService) {
   return () => {
-      return init.getCredentials();
+    return init.getCredentials();
   };
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, SolicitationModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initApp,
       multi: true,
-      deps: [AppInitializerService]
-    }
+      deps: [AppInitializerService],
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
