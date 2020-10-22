@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren:
       './modules/solicitation/solicitation.module#SolicitationModule',
   },
+  {
+    path: 'approve',
+    loadChildren: './modules/approve/approve.module#ApproveModule',
+  },
 ];
 
 @NgModule({

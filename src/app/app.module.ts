@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppInitializerService } from './core/initializer/app-initializer.service';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
 import { SolicitationModule } from './modules/solicitation/solicitation.module';
+import { ApproveModule } from './modules/approve/approve.module';
 
 export function initApp(init: AppInitializerService) {
   return () => {
@@ -18,7 +19,13 @@ export function initApp(init: AppInitializerService) {
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, SolicitationModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SolicitationModule,
+    ApproveModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true },
     {
