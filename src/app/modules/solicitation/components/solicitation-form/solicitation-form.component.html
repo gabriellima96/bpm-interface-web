@@ -1,2 +1,7 @@
 <h1>Interface Web</h1>
 <h2>Solicitante: {{ user.fullname }}</h2>
+
+<label for="colaboradores">Selecione um colaborador:</label>
+<select [(ngModel)]="colaboradorSelecionado">
+  <option id="colaboradores" *ngFor="let colaborador of colaboradores" [value]="colaborador.nomfun">{{colaborador.nomfun}}</option>
+</select>

@@ -16,14 +16,14 @@ export class UrlInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+
     const BEARER_TOKEN = this.workflowService.getToken();
     request = request.clone({
       headers: request.headers
         .set('Authorization', BEARER_TOKEN)
-        .set('Content-Type', 'application/json')
-        .set('user', this.workflowService.getUser().username)
-        .set('token', sessionStorage.getItem('senior-token')),
+        .set('user', this.workflowService.getUser().username),
     });
+
     return next.handle(request);
   }
 }

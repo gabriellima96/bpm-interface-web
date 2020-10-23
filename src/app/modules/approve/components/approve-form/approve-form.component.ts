@@ -4,6 +4,7 @@ import {
 } from './../../../../workflow-cockpit.d';
 import { WorkflowService } from './../../../../core/workflow/services/workflow.service';
 import { Component, OnInit } from '@angular/core';
+import { SolicitationService } from 'src/app/modules/solicitation/solicitation.service';
 
 @Component({
   selector: 'app-approve-form',
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApproveFormComponent implements OnInit {
   nomeSolicitante: string;
+  nomeColaboradorSelecionado: string;
 
   constructor(private workflowService: WorkflowService) {}
 
@@ -19,6 +21,7 @@ export class ApproveFormComponent implements OnInit {
     // Buscar os dados das variáveis de processo da plataforma
     this.workflowService.requestProcessVariables().then((processVariavel) => {
       this.nomeSolicitante = processVariavel.nomeSolicitante;
+      this.nomeColaboradorSelecionado = processVariavel.nomfun;
     });
 
     // Associar o método de envio com a função da plataforma
